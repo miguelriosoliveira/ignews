@@ -1,20 +1,8 @@
-import { Readable } from 'stream';
-
-import { NextApiRequest, NextApiRequest, NextApiResponse } from 'next';
+import { buffer } from 'micro';
+import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 
 import { stripe } from '../../services/stripe';
-
-async function buffer(readable: Readable) {
-	const chunks = [];
-
-	// eslint-disable-next-line no-restricted-syntax
-	for await (const chunk of readable) {
-		chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
-	}
-
-	return Buffer.concat(chunks);
-}
 
 export const config = {
 	api: {
@@ -38,7 +26,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
 		}
 
 		if (relevantEvents.has(event.type)) {
-			// fazer algo
+			console.log('evento recebido:', event);
 		}
 
 		response.status(200).json({ received: true });
