@@ -20,6 +20,7 @@
 	"plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
 	"rules": {
 		"camelcase": "off",
+		"no-case-declarations": "off",
 
 		"@typescript-eslint/explicit-module-boundary-types": "off",
 		"@typescript-eslint/no-use-before-define": "error",

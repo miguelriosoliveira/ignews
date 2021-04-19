@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 
 import { stripe } from '../../services/stripe';
+import { saveSubscription } from '../_lib/manageSubscription';
 
 export const config = {
 	api: {
@@ -26,7 +27,22 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
 		}
 
 		if (relevantEvents.has(event.type)) {
-			console.log('evento recebido:', event);
+			try {
+				switch (event.type) {
+					case 'checkout.session.completed':
+						const checkoutSession = event.data.object as Stripe.Checkout.Session;
+						await saveSubscription({
+							subscriptionId: String(checkoutSession.subscription),
+							customerId: String(checkoutSession.customer),
+						});
+						break;
+					default:
+						throw new Error('Unhandled event');
+				}
+			} catch (err) {
+				response.json({ error: 'Webhook handler failed.' }); // not a error response because it's a response to Stripe, not to us.
+				return;
+			}
 		}
 
 		response.status(200).json({ received: true });
