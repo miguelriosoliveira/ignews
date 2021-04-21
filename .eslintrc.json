@@ -46,8 +46,9 @@
 		"react-hooks/rules-of-hooks": "error",
 
 		"react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
-		"react/react-in-jsx-scope": "off",
-		"react/jsx-indent": ["warn", "tab"]
+		"react/jsx-indent": ["warn", "tab"],
+		"react/jsx-props-no-spreading": "off",
+		"react/react-in-jsx-scope": "off"
 	},
 	"settings": {
 		"import/resolver": {

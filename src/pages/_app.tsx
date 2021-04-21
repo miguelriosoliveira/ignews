@@ -9,7 +9,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<NextAuthProvider session={pageProps.session}>
 			<Header />
-			{/* eslint-disable-next-line react/jsx-props-no-spreading */}
 			<Component {...pageProps} />
 		</NextAuthProvider>
 	);
