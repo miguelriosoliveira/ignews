@@ -8,15 +8,15 @@ export function Header() {
 	return (
 		<header className={styles.headerContainer}>
 			<div className={styles.headerContent}>
-				<Link href="/" passHref>
+				<Link href="/">
 					<img src="/images/logo.svg" alt="ig.news" />
 				</Link>
 
 				<nav>
-					<a href="/" className={styles.active}>
-						Home
-					</a>
-					<a href="/posts">Posts</a>
+					<Link href="/">
+						<a className={styles.active}>Home</a>
+					</Link>
+					<Link href="/posts">Posts</Link>
 				</nav>
 
 				<SignInButton />
