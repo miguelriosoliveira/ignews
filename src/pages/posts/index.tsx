@@ -24,7 +24,7 @@ export default function Posts({ posts }: PostsProps) {
 	return (
 		<>
 			<Head>
-				<title>Ig.news | Posts</title>
+				<title>Posts | Ig.news</title>
 			</Head>
 
 			<main className={styles.container}>

@@ -18,7 +18,7 @@ export default function Home({ product }: Props) {
 	return (
 		<>
 			<Head>
-				<title>ig.news | Home</title>
+				<title>Ig.news</title>
 			</Head>
 
 			<main className={styles.contentContainer}>
